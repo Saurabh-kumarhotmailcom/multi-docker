@@ -3,11 +3,11 @@ language: generic
 services:
   - docker
 
-before_install:
-  - docker build -t saurabhkumardocker/react-test -f ./client/Dockerfile.dev ./client
+# before_install:
+#   - docker build -t saurabhkumardocker/react-test -f ./client/Dockerfile.dev ./client
 
-script:
-  - docker run saurabhkumardocker/react-test npm test -- --coverage
+# script:
+#   - docker run saurabhkumardocker/react-test npm test -- --coverage
 
 after_success:
   - docker build -t saurabhkumardocker/multi-client ./client
