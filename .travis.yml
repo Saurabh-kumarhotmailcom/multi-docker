@@ -3,11 +3,11 @@ language: generic
 services:
   - docker
 
-before_install:
-  - docker build -t saurabhkumardocker/react-test -f ./client/Dockerfile.dev ./client
+# before_install:
+#   - docker build -t saurabhkumardocker/react-test -f ./client/Dockerfile.dev ./client
 
-script:
-  - docker run saurabhkumardocker/react-test npm test -- --coverage -e CI=true
+# script:
+#   - docker run saurabhkumardocker/react-test npm test -- --coverage
 
 after_success:
   - docker build -t saurabhkumardocker/multi-client ./client
@@ -22,6 +22,19 @@ after_success:
   - docker push saurabhkumardocker/multi-nginx
   - docker push saurabhkumardocker/multi-server
   - docker push saurabhkumardocker/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-1
+  app: multi-docker
+  env: Docker-env
+  bucket_name: elasticbeanstalk-eu-west-1-757069236268
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+
 
 
 
