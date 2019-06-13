@@ -17,7 +17,7 @@ services:
 #   #Login to docker cli
 #   # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
 #   - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
-#   #take those images and push them to docker hub.
+#   #take those images and push them to docker-hub.
 #   - docker push saurabhkumardocker/multi-client
 #   - docker push saurabhkumardocker/multi-nginx
 #   - docker push saurabhkumardocker/multi-server
@@ -26,8 +26,8 @@ services:
 deploy:
   provider: elasticbeanstalk
   region: eu-west-1
-  app: multi-docker
-  env: MultiDocker-env
+  app: multi-docker-container
+  env: MultiDockerContainer-env
   bucket_name: elasticbeanstalk-eu-west-1-757069236268
   bucket_path: docker-multi
   on:
