@@ -9,19 +9,19 @@ services:
 # script:
 #   - docker run saurabhkumardocker/react-test npm test -- --coverage
 
-after_success:
-  - docker build -t saurabhkumardocker/multi-client ./client
-  - docker build -t saurabhkumardocker/multi-nginx ./nginx
-  - docker build -t saurabhkumardocker/multi-server ./server
-  - docker build -t saurabhkumardocker/multi-worker ./worker
-  #Login to docker cli
-  # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
-  #take those images and push them to docker hub.
-  - docker push saurabhkumardocker/multi-client
-  - docker push saurabhkumardocker/multi-nginx
-  - docker push saurabhkumardocker/multi-server
-  - docker push saurabhkumardocker/multi-worker
+# after_success:
+#   - docker build -t saurabhkumardocker/multi-client ./client
+#   - docker build -t saurabhkumardocker/multi-nginx ./nginx
+#   - docker build -t saurabhkumardocker/multi-server ./server
+#   - docker build -t saurabhkumardocker/multi-worker ./worker
+#   #Login to docker cli
+#   # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
+#   - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+#   #take those images and push them to docker hub.
+#   - docker push saurabhkumardocker/multi-client
+#   - docker push saurabhkumardocker/multi-nginx
+#   - docker push saurabhkumardocker/multi-server
+#   - docker push saurabhkumardocker/multi-worker
 
 deploy:
   provider: elasticbeanstalk
